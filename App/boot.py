@@ -15,6 +15,7 @@ def login_routing(login_controller):
 
 def dashboard_routing(dashboard_controller):
     bottle.route('/dashboard', 'GET', dashboard_controller.mydashboard)
+    bottle.route('/dashboard', 'POST', dashboard_controller.do_music)
 
 
 def default_route(default_controller):
