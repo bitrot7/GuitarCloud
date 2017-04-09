@@ -1,7 +1,9 @@
-# noinspection PyUnresolvedReferences
-import bottle
-from bottle import request
-from controller.base import BaseController
+
+from bottle import request, redirect
+
+from .base import BaseController
+
+
 class LoginController(BaseController):
 
     def __init__(self):
@@ -16,11 +18,22 @@ class LoginController(BaseController):
                 <input value="Login" type="submit" />
             </form>
         '''
+
     def do_login(self):
         username = request.forms.get('username')
         password = request.forms.get('password')
         if super(LoginController, self).check_login(username, password):
-            return "<p>Your login information was correct.</p>"
+            redirect_url = self.getlogon_success_url()
+            return redirect(redirect_url)
         else:
-            return "<p>Login failed.</p>"
+            redirect_url = self.getlogon_failure_url()
+            return redirect(redirect_url)
 
+    def failed_logon(self):
+        return '<p> your logon attempt was unsuccessful</p>'
+
+    def getlogon_failure_url(self):
+        return '/fail'
+
+    def getlogon_success_url(self):
+        return '/dashboard'

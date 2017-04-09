@@ -19,6 +19,6 @@ class BaseController:
         return cursor.fetchone()
 
     def check_login(self, username, password):
-        if (self.getCredentials(username, password)):
+        if self.getCredentials(username, password):
             return True
         return False
