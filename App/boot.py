@@ -28,7 +28,7 @@ def main():
     login_routing(login_controller)
     dashboard_routing(dashboard_controller)
     default_route(default_controller)
-    run(host='localhost', port='8080')
+    run(host='localhost', port='8000')
     return
 
 
