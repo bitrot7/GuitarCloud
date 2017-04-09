@@ -1,5 +1,5 @@
 # noinspection PyUnresolvedReferences
-
+import bottle
 from bottle import request
 from controller.base import BaseController
 class LoginController(BaseController):
@@ -23,3 +23,4 @@ class LoginController(BaseController):
             return "<p>Your login information was correct.</p>"
         else:
             return "<p>Login failed.</p>"
+
